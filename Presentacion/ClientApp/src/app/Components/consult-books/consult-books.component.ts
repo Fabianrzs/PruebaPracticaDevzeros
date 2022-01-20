@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/Elements/models/book';
+import { AuthenticationService } from 'src/app/Elements/services/authentication.service';
 import { BookService } from 'src/app/Elements/services/Book.service';
 import { SignalRService } from 'src/app/Elements/services/SignalR.service';
 
@@ -12,7 +13,8 @@ export class ConsultBooksComponent implements OnInit {
 
   books: Book[];
   book: Book;
-  
+  bookAdd: Book;
+
   BOOKS: Book[];
   page = 1;
   pageSize = 3;
@@ -21,12 +23,13 @@ export class ConsultBooksComponent implements OnInit {
 
   constructor(
     private service: BookService,
-    private signalService: SignalRService
+    private signalService: SignalRService,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
     this.book= new Book();
-    
+    this.bookAdd = new Book();
     this.get();
 
     this.signalService.signalReceived
@@ -48,15 +51,30 @@ export class ConsultBooksComponent implements OnInit {
       );
     });
   }
-  put() {
+  update() {
     this.service.put(this.book).subscribe(result => {
-      this.books = result;
+      this.get();
     });
+    
   }
   delete(codBook: number) {
-    this.service.delete(codBook).subscribe(result => {
-      
+    this.service.delete(codBook).subscribe(result => {this.get();});
+   
+  }
+  getId(codBook: number){
+    this.service.getId(codBook).subscribe(result => {
+      this.book = result;
     });
+  }
+
+  add(){
+    this.service.post(this.bookAdd).subscribe(result => {
+      result = this.bookAdd;
+    });
+  }
+
+  exit(){
+    this.authenticationService.logout();
   }
 
 }

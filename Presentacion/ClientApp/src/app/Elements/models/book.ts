@@ -1,8 +1,8 @@
 export class Book {
     codBook: number;
-    Title: string;
-    Author: string;
-    Publisher: string; 
-    Genere: string;
-    Price: number;
+    title: string;
+    author: string;
+    publisher: string; 
+    genere: string;
+    price: number;
 }

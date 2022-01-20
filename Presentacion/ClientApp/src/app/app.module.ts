@@ -11,7 +11,8 @@ import { HomeComponent } from './Pag/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
 import { FetchDataComponent } from './Pag/fetch-data/fetch-data.component';
 import { ConsultBooksComponent } from './Components/consult-books/consult-books.component';
-import { AddBooksComponent } from './Components/add-books/add-books.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthGuard } from './Elements/services/auth.guarda';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,6 @@ import { AddBooksComponent } from './Components/add-books/add-books.component';
     FetchDataComponent,
     LoginComponent,
     ConsultBooksComponent,
-    AddBooksComponent
   ],
   imports: [
     reactivo,
@@ -30,10 +30,12 @@ import { AddBooksComponent } from './Components/add-books/add-books.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: ConsultBooksComponent, pathMatch: 'full', canActivate: [AuthGuard] },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-    ])
+      { path: 'books', component: ConsultBooksComponent },
+    ]),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

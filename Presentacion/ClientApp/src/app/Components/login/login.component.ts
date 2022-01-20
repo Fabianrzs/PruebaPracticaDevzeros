@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { first } from 'rxjs/operators';
 import { User } from 'src/app/Elements/models/user';
-import { AuthenticationService } from 'src/app/Elements/services/authentication.services';
+import { AuthenticationService } from 'src/app/Elements/services/authentication.service';
+import { AlertModalComponent } from '../alert-modal/alert-modal.component';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +17,15 @@ export class LoginComponent implements OnInit {
   userForm: FormGroup;
   returnUrl: String = "";
   user: User;
+  submitted: boolean;
+  loading: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
+    private modalService: NgbModal
   ) {
     this.user = new User();
     if (this.authenticationService.currentUserValue) {
@@ -41,21 +46,21 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    alert('Submit')
+    this.submitted = true;
     if (this.userForm.invalid) {
       return;
     }
     this.user = this.userForm.value;
-    alert(JSON.stringify(this.user))
-    
+    this.loading = true;
     this.authenticationService.login(this.user.userName, this.user.password).pipe(first()).subscribe((data) => {
-          this.router.navigate(["/consultar-libros"]);
+          this.router.navigate(["books"]);
         },(error) => {
-          /*const modalRef = this.modalService.open(AlertModalComponent);
+          const modalRef = this.modalService.open(AlertModalComponent);
           modalRef.componentInstance.title = "Acceso Denegado";
           modalRef.componentInstance.message = "Usuario o Contraseña Erroneas";
-          this.loading = false;*/
+          this.loading = false;
         }
       );
   }
 }
+
