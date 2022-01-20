@@ -11,15 +11,13 @@
             <form [formGroup]="userForm"  class="sign-in-form">
               <div class="form-floating mb-3">
                 <input type="text" id="userName" class="form-control" formControlName="userName"
-                class="form-control" [ngClass]="{ 'is-invalid': submitted &&
-                f.userName.errors }"/>
+                class="form-control" [ngClass]="{ 'is-invalid': form.userName.errors }"/>
                 <label class="form-label" for="userName">User Name</label>
               </div>
 
               <div class="form-floating mb-3">
                 <input type="password" id="password" class="form-control" formControlName="password"
-                class="form-control" [ngClass]="{ 'is-invalid': submitted &&
-                f.password.errors }"/>
+                class="form-control" [ngClass]="{ 'is-invalid': form.password.errors }"/>
                 <label class="form-label" for="password" >Password</label>
               </div>
               <button class="btn btn-outline-light btn-lg px-5" type="submit" (click)="onSubmit()">Login</button>

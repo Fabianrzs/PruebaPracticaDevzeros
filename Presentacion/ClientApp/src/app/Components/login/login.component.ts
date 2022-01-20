@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
   }
   
-  get f() {
+  get form() {
     return this.userForm.controls;
   }
 
