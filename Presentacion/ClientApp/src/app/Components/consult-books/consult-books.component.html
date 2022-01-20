@@ -1,0 +1,86 @@
+<div class="container" style="width: 700px;">
+    <div class="row" style="height: 500px;">
+      <div class="col-8 col-sm">
+        <div class="row">
+          <div class="col-12">
+            <h5 class="text-center">Servicios</h5>
+            <hr>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md">
+            <div class="column">
+              <div class="table-container">
+                <table class="table table-light table-hover" *ngIf='books && books.length'>
+                  <thead class = "text-primary">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Author</th>
+                      <th scope="col">Publisher</th>
+                      <th scope="col">Genere</th>
+                      <th scope="col">Price</th>
+                    </tr>            
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let b of books; index as i ">
+                      <th scope="row">{{i + 1}}</th>
+                      <td>{{b.Title}}</td>
+                      <td>{{b.Author}}</td>
+                      <td>{{b.Publisher}}</td>
+                      <td>{{b.Genere}}</td>
+                      <td>{{b.Price}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="d-flex justify-content-right p-2">
+                  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="get()">
+                  </ngb-pagination>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!--<div class="modal fade" id="ModalRegistrarServicio" data-bs-backdrop="static"
+       data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="staticBackdropLabel">Registrar Servicio</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formServicio">
+        <div class="form-floating border border-5">
+          <input type="text" formControlName="idServico" class="form-control"
+            [ngClass]="{ 'is-invalid':  control.idServico.errors && formServicio.get('idServico').touched }" >
+          <label for="floatingInputGrid">Identificador</label>
+        </div>
+        <div class="form-floating border border-5">
+          <input type="text" formControlName="nombre" class="form-control"
+          [ngClass]="{ 'is-invalid':  control.nombre.errors && formServicio.get('nombre').touched }" >        
+          <label for="floatingInputGrid">Nombre</label>
+        </div>
+        <div class="form-floating border border-5">
+          <input type="text" formControlName="precio" class="form-control"
+          [ngClass]="{ 'is-invalid':  control.precio.errors && formServicio.get('precio').touched }" >        
+          <label for="floatingInputGrid">Precio</label>
+        </div>
+        <div class="form-floating border border-5">
+          <input type="text" formControlName="duracion" class="form-control"
+          [ngClass]="{ 'is-invalid':  control.duracion.errors && formServicio.get('duracion').touched }" >        
+          <label for="floatingInputGrid">Duracion</label>
+        </div>
+        <br>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-success btn-sm" (click)="onSubmit()">Guardar</button>
+        </div>
+      </div>
+    </div>-->
