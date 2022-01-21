@@ -10,11 +10,8 @@ namespace DAL
     {
         Task<TEntity> Save(TEntity entity);
         Task<IEnumerable<TEntity>> Consult();
-        Task<TEntity> GetId(int id);
+        Task<TEntity> GetCod(int id);
         Task<TEntity> Update(TEntity entity);
         Task Delete(TEntity entity);
-
-        
-
     }
 }

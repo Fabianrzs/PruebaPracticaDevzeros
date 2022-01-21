@@ -29,29 +29,9 @@ namespace Presentacion.Controllers
         {
             var producto = mapearBook(bookInput);
             var request = _service.Save(producto);
-            if (request.Error)
-            {
-                ModelState.AddModelError("Guardar Producto", request.Mensaje);
-                var problemDetails = new ValidationProblemDetails(ModelState)
-                {
-                    Status = StatusCodes.Status400BadRequest,
-                };
-                return BadRequest(problemDetails);
-            }
+            if (request.Error) return BadRequest(request.Mensaje);
             await _hubContext.Clients.All.SendAsync("SignalMessageReceived", bookInput);
             return Ok(request.Book);
-        }
-
-        private Book mapearBook(BookInputModel bookInput)
-        {
-            var book = new Book();
-
-            book.Title = bookInput.Title;
-            book.Publisher = bookInput.Publisher;
-            book.Price = bookInput.Price;
-            book.Author = bookInput.Author;
-            book.Genere = bookInput.Genere;
-            return book;
         }
 
         [HttpGet]

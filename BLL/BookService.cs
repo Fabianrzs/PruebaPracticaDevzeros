@@ -1,4 +1,5 @@
 ﻿using DAL;
+using DAL.Implements;
 using Entity;
 using System;
 using System.Collections.Generic;
@@ -9,122 +10,116 @@ namespace BLL
     public class BookService
     {
         private readonly PruebaContext _context;
+        private readonly BookRepository _repository;
         public BookService(PruebaContext context)
         {
             _context = context;
+            _repository = new BookRepository(context);
         }
 
-        public ProductoLogResponse Save(Book producto)
+        public BookLogResponse Save(Book book)
         {
             try
             {
-                if (_context.Books.Find(producto.CodBook) == null)
+                if (_repository.GetCod(book.CodBook).Result == null)
                 {
-                    _context.Books.Add(producto);
-                    _context.SaveChanges();
-                    return new ProductoLogResponse(producto);
-                }
-                return new ProductoLogResponse($"El libro ya se encuentra registrado");
+                    _repository.Save(book);
+                    return new BookLogResponse(book);
+                }                
+                return new BookLogResponse($"El libro ya se encuentra registrado");
             }
-            catch (Exception e) { return new ProductoLogResponse($"Error al Guardar: Se presento lo siguiente {e.Message}"); }
+            catch (Exception e) { return new BookLogResponse($"Error al Guardar: Se presento lo siguiente {e.Message}"); }
         }
 
-        public ProductoLogResponse Update(int codBooks, Book book)
+        public BookLogResponse Update(int codBooks, Book book)
         {
             try
-            {
-                Book bookEncontrado = _context.Books.Find(codBooks);
+            { Book bookEncontrado = _repository.GetCod(codBooks).Result;
                 if (bookEncontrado != null)
                 {
-                    bookEncontrado.Author = book.Author;
-                    bookEncontrado.Title = book.Title;
-                    bookEncontrado.Publisher = book.Publisher;
-                    bookEncontrado.Price = book.Price;
-                    bookEncontrado.Genere = book.Genere;
-                    _context.Books.Update(bookEncontrado);
-                    _context.SaveChanges();
-                    return new ProductoLogResponse(bookEncontrado);
+                    bookEncontrado = book;
+                    _repository.Update(bookEncontrado);                    
+                    return new BookLogResponse(book);
                 }
-                return new ProductoLogResponse($"No se encuentra registro a modificar");
+                return new BookLogResponse($"No se encuentra registro a modificar");
             }
-            catch (Exception e) { return new ProductoLogResponse($"Error al Modificar: Se presento lo siguiente {e.Message}"); }
+            catch (Exception e) { return new BookLogResponse($"Error al Modificar: Se presento lo siguiente {e.Message}"); }
         }
 
-        public ProductoLogResponse Find(int codBooks)
+        public BookLogResponse Find(int codBooks)
         {
             try
             {
-                Book producto = _context.Books.Find(codBooks);
-                if (producto != null)
-                {
-                    return new ProductoLogResponse(producto);
-                }
-                return new ProductoLogResponse($"No se encuentra el registro buscado");
-            }
-            catch (Exception e) { return new ProductoLogResponse($"Error al Buscar: Se presento lo siguiente {e.Message}"); }
-        }
-
-        public string Delete(int referencia)
-        {
-            try
-            {
-                Book book = _context.Books.Find(referencia);
+                Book book = _repository.GetCod(codBooks).Result;
                 if (book != null)
                 {
-                    _context.Books.Remove(book);
-                    _context.SaveChanges();
-                    return "Producto eliminado satisfactoriamente";
+                    return new BookLogResponse(book);
                 }
-                return ($"No se encuentra el producto a eliminar");
+                return new BookLogResponse($"No se encuentra el registro buscado");
+            }
+            catch (Exception e) { return new BookLogResponse($"Error al Buscar: Se presento lo siguiente {e.Message}"); }
+        }
+
+        public string Delete(int codBook)
+        {
+            try
+            {
+                Book book = _repository.GetCod(codBook).Result;
+                if (book != null)
+                {
+                    _repository.Delete(book);
+                    return "Libro eliminado satisfactoriamente";
+                }
+                return ($"No se encuentra el Libro a eliminar");
             }
             catch (Exception e) { return ($"Error al Eliminar: Se presento lo siguiente {e.Message}"); }
         }
 
-        public ProductoConsultaResponse Consult()
+        public BookConsultaResponse Consult()
         {
             try
             {
-                List<Book> books = _context.Books.ToList();
+                List<Book> books = (List<Book>)_repository.Consult().Result;
                 if (books != null)
                 {
-                    return new ProductoConsultaResponse(books);
+                    return new BookConsultaResponse(books);
                 }
-                return new ProductoConsultaResponse($"No se han agregado registros");
+                return new BookConsultaResponse($"No se han agregado registros");
             }
-            catch (Exception e) { return new ProductoConsultaResponse($"Error al Consultar: Se presento lo siguiente {e.Message}"); }
+            catch (Exception e) { return new BookConsultaResponse($"Error al Consultar: Se presento lo siguiente {e.Message}"); }
         }
     }
 
-    public class ProductoLogResponse
+    public class BookLogResponse
     {
         public Book Book { get; set; }
         public string Mensaje { get; set; }
         public bool Error { get; set; }
 
-        public ProductoLogResponse(Book book)
+        public BookLogResponse(Book book)
         {
             Book = book;
             Error = false;
         }
 
-        public ProductoLogResponse(string mensaje)
+        public BookLogResponse(string mensaje)
         {
             Mensaje = mensaje;
             Error = true;
         }
     }
 
-    public class ProductoConsultaResponse
+    public class BookConsultaResponse
     {
         public List<Book> Books { get; set; }
         public string Mensaje { get; set; }
         public bool Error { get; set; }
-        public ProductoConsultaResponse(List<Book> books)
+        public BookConsultaResponse(List<Book> books)
         {
             Books = books;
             Error = false;
         }
-        public ProductoConsultaResponse(string mensaje)
+        public BookConsultaResponse(string mensaje)
         {
             Mensaje = mensaje;
             Error = true;
