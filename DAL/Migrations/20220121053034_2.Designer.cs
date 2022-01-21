@@ -3,14 +3,16 @@ using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
-    [DbContext(typeof(PruebaContext))]
-    partial class PruebaContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ApplicationContext))]
+    [Migration("20220121053034_2")]
+    partial class _2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,7 +61,7 @@ namespace DAL.Migrations
                             CodBook = 2,
                             Author = "Stephen Hawking",
                             Genere = "Engenering & Technology",
-                            Price = 141,
+                            Price = 147,
                             Publisher = "Jaiko Publishing House",
                             Title = "The Theory Of Everything"
                         },

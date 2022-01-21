@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
-    [DbContext(typeof(PruebaContext))]
-    [Migration("20220119182139_initia")]
-    partial class initia
+    [DbContext(typeof(ApplicationContext))]
+    [Migration("20220121052815_SeederInitial")]
+    partial class SeederInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,7 @@ namespace DAL.Migrations
                     b.Property<string>("Author")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Genre")
+                    b.Property<string>("Genere")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Price")
@@ -45,6 +45,35 @@ namespace DAL.Migrations
                     b.HasKey("CodBook");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            CodBook = 1,
+                            Author = "Robin Sharma",
+                            Genere = "Fiction",
+                            Price = 141,
+                            Publisher = "Jaiko Publishing House",
+                            Title = "The Monk Who Sold His Ferrari"
+                        },
+                        new
+                        {
+                            CodBook = 2,
+                            Author = "Stephen Hawking",
+                            Genere = "Engenering & Technology",
+                            Price = 141,
+                            Publisher = "Jaiko Publishing House",
+                            Title = "The Theory Of Everything"
+                        },
+                        new
+                        {
+                            CodBook = 3,
+                            Author = "Robert Kiyosaki",
+                            Genere = "Personal Finance",
+                            Price = 288,
+                            Publisher = "Plata Publishing",
+                            Title = "Rich Dad Poor Dad"
+                        });
                 });
 
             modelBuilder.Entity("Entity.User", b =>

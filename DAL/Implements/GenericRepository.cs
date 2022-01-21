@@ -9,8 +9,8 @@ namespace DAL.Implements
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        private readonly PruebaContext _context;
-        public GenericRepository(PruebaContext context)
+        private readonly ApplicationContext _context;
+        public GenericRepository(ApplicationContext context)
         {
             _context = context;
         }

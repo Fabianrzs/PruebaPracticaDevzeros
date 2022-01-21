@@ -9,9 +9,9 @@ namespace BLL
 {
     public class BookService
     {
-        private readonly PruebaContext _context;
+        private readonly ApplicationContext _context;
         private readonly BookRepository _repository;
-        public BookService(PruebaContext context)
+        public BookService(ApplicationContext context)
         {
             _context = context;
             _repository = new BookRepository(context);

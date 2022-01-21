@@ -31,7 +31,7 @@ namespace Presentacion
             services.AddAutoMapper(typeof(Startup));
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<PruebaContext>(p => p.UseSqlServer(connectionString));
+            services.AddDbContext<ApplicationContext>(p => p.UseSqlServer(connectionString));
 
             
 

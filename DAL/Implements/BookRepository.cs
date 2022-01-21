@@ -9,6 +9,6 @@ namespace DAL.Implements
 {
     public class BookRepository: GenericRepository<Book>, IBookRepository
     {
-        public BookRepository(PruebaContext context): base(context){}
+        public BookRepository(ApplicationContext context): base(context){}
     }
 }

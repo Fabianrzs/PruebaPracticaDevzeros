@@ -18,7 +18,7 @@ namespace Presentacion.Controllers
         private readonly BookService _service;
         private readonly IHubContext<SignalHub> _hubContext;
         private readonly IMapper _mapper;
-        public BookController(PruebaContext contex, IHubContext<SignalHub> hubContext, IMapper mapper)
+        public BookController(ApplicationContext contex, IHubContext<SignalHub> hubContext, IMapper mapper)
         {
             _hubContext = hubContext;
             _service = new BookService(contex);

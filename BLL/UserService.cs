@@ -10,8 +10,8 @@ namespace BLL
 {
     public class UserService
     {
-        private readonly PruebaContext _context;
-        public UserService(PruebaContext context) => _context = context;
+        private readonly ApplicationContext _context;
+        public UserService(ApplicationContext context) => _context = context;
         public User Validate(string userName, string password)
         {
             return _context.Users.FirstOrDefault(t => t.UserName == userName && t.Password == password);

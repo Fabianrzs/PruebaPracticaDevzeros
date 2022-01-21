@@ -2,7 +2,7 @@
 
 namespace DAL.Migrations
 {
-    public partial class initia : Migration
+    public partial class SeederInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace DAL.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Author = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Publisher = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Genere = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -35,6 +35,16 @@ namespace DAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.UserName);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "CodBook", "Author", "Genere", "Price", "Publisher", "Title" },
+                values: new object[,]
+                {
+                    { 1, "Robin Sharma", "Fiction", 141, "Jaiko Publishing House", "The Monk Who Sold His Ferrari" },
+                    { 2, "Stephen Hawking", "Engenering & Technology", 141, "Jaiko Publishing House", "The Theory Of Everything" },
+                    { 3, "Robert Kiyosaki", "Personal Finance", 288, "Plata Publishing", "Rich Dad Poor Dad" }
                 });
 
             migrationBuilder.InsertData(

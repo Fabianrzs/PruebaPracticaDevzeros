@@ -23,7 +23,7 @@ namespace Presentacion.Controllers
         private JwtService _jwtService;
         private UserService _userService;
 
-        public LoginController(PruebaContext context, IOptions<AppSetting> appSettings)
+        public LoginController(ApplicationContext context, IOptions<AppSetting> appSettings)
         {
             _jwtService = new JwtService(appSettings);
             _userService = new UserService(context);
