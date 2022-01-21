@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using AutoMapper;
+using BLL;
 using DAL;
 using Entity;
 using Microsoft.AspNetCore.Http;
@@ -14,21 +15,20 @@ namespace Presentacion.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private BookService _service;
+        private readonly BookService _service;
         private readonly IHubContext<SignalHub> _hubContext;
-
-        public BookController(PruebaContext contex, IHubContext<SignalHub> hubContext)
+        private readonly IMapper _mapper;
+        public BookController(PruebaContext contex, IHubContext<SignalHub> hubContext, IMapper mapper)
         {
             _hubContext = hubContext;
             _service = new BookService(contex);
-
+            _mapper = mapper;
         }
 
         [HttpPost]
         public async Task<ActionResult<Book>> GuardarAsync(BookInputModel bookInput)
         {
-            var producto = mapearBook(bookInput);
-            var request = _service.Save(producto);
+            var request = _service.Save(_mapper.Map<Book>(bookInput));
             if (request.Error) return BadRequest(request.Mensaje);
             await _hubContext.Clients.All.SendAsync("SignalMessageReceived", bookInput);
             return Ok(request.Book);

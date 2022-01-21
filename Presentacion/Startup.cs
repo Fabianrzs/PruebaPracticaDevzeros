@@ -28,6 +28,7 @@ namespace Presentacion
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddAutoMapper(typeof(Startup));
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<PruebaContext>(p => p.UseSqlServer(connectionString));
