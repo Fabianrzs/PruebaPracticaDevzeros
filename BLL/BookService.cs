@@ -14,7 +14,7 @@ namespace BLL
         public BookService(ApplicationContext context)
         {
             _context = context;
-            _repository = new BookRepository(context);
+            _repository = new BookRepository(_context);
         }
 
         public BookLogResponse Save(Book book)
