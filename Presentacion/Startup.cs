@@ -1,4 +1,7 @@
+using BLL.Interface;
+using BLL.Service;
 using DAL;
+using DAL.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +30,9 @@ namespace Presentacion
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+
 
             services.AddAutoMapper(typeof(Startup));
 
