@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using BLL;
 using BLL.Interface;
-using DAL;
-using DAL.Implements;
-using DAL.UnitOfWork;
 using Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,11 +15,11 @@ namespace Presentacion.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private readonly IGenericService<Book> _service;
+        private readonly IBookService _service;
         private readonly IHubContext<SignalHub> _hubContext;
         private readonly IMapper _mapper;
         public BookController(IHubContext<SignalHub> hubContext, IMapper mapper,
-            IGenericService<Book> service)
+            IBookService service)
         {
             _hubContext = hubContext;
             _service = service;

@@ -14,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Presentacion.Config;
 using Presentacion.Hubs;
+using Presentacion.Middleware;
 using System.Text;
 
 namespace Presentacion
@@ -30,9 +31,8 @@ namespace Presentacion
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 
+            IoC.AddDependency(services);
 
             services.AddAutoMapper(typeof(Startup));
 
