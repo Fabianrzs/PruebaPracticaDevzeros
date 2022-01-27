@@ -15,5 +15,8 @@ namespace Entity
         public string Password { get; set; }
         public string Rol { get; set; }
 
+        
+        public UserRole UserRole { get; set; }
+
     }
 }
