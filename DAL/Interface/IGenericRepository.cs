@@ -8,10 +8,10 @@ namespace DAL
 {
     public interface IGenericRepository<TEntity> where TEntity : class
     {
-        Task<TEntity> Save(TEntity entity);
-        Task<IEnumerable<TEntity>> Consult();
-        Task<TEntity> GetCod(int id);
-        Task<TEntity> Update(TEntity entity);
-        Task Delete(TEntity entity);
+        TEntity Save(TEntity entity);
+        IEnumerable<TEntity> Consult();
+        TEntity GetCod(int id);
+        TEntity Update(TEntity entity);
+        void Delete(TEntity entity);
     }
 }

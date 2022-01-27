@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "55HIePE3HdEJz5TMpEPrYAVjssFsJ7Tj1SKalZ5rJ6mslFytL1LEMSdxJn0SK4gU7G+KQh7KjXyceyk/W0bqtw==",
+  "dgSpecHash": "nGfSKh9WUkXmI0COBujGFvncrIuQj2r/bpHESqGKZuoiILfSdOiD5DsHdOCL3jeL6kHOsZbo1cNKLJdAcKfvVg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\WIN10\\Desktop\\PruebaPracticaDevzeros\\Entity\\Entity.csproj",
+  "projectFilePath": "C:\\Users\\WIN10\\source\\repos\\p\\Entity\\Entity.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

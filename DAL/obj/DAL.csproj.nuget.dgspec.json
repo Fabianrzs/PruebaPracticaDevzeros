@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\WIN10\\Desktop\\PruebaPracticaDevzeros\\DAL\\DAL.csproj": {}
+    "C:\\Users\\WIN10\\source\\repos\\p\\DAL\\DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\WIN10\\Desktop\\PruebaPracticaDevzeros\\DAL\\DAL.csproj": {
+    "C:\\Users\\WIN10\\source\\repos\\p\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\WIN10\\Desktop\\PruebaPracticaDevzeros\\DAL\\DAL.csproj",
+        "projectUniqueName": "C:\\Users\\WIN10\\source\\repos\\p\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\Users\\WIN10\\Desktop\\PruebaPracticaDevzeros\\DAL\\DAL.csproj",
+        "projectPath": "C:\\Users\\WIN10\\source\\repos\\p\\DAL\\DAL.csproj",
         "packagesPath": "C:\\Users\\WIN10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\WIN10\\Desktop\\PruebaPracticaDevzeros\\DAL\\obj\\",
+        "outputPath": "C:\\Users\\WIN10\\source\\repos\\p\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -34,8 +34,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\WIN10\\Desktop\\PruebaPracticaDevzeros\\Entity\\Entity.csproj": {
-                "projectPath": "C:\\Users\\WIN10\\Desktop\\PruebaPracticaDevzeros\\Entity\\Entity.csproj"
+              "C:\\Users\\WIN10\\source\\repos\\p\\Entity\\Entity.csproj": {
+                "projectPath": "C:\\Users\\WIN10\\source\\repos\\p\\Entity\\Entity.csproj"
               }
             }
           }
@@ -86,14 +86,14 @@
         }
       }
     },
-    "C:\\Users\\WIN10\\Desktop\\PruebaPracticaDevzeros\\Entity\\Entity.csproj": {
+    "C:\\Users\\WIN10\\source\\repos\\p\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\WIN10\\Desktop\\PruebaPracticaDevzeros\\Entity\\Entity.csproj",
+        "projectUniqueName": "C:\\Users\\WIN10\\source\\repos\\p\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "C:\\Users\\WIN10\\Desktop\\PruebaPracticaDevzeros\\Entity\\Entity.csproj",
+        "projectPath": "C:\\Users\\WIN10\\source\\repos\\p\\Entity\\Entity.csproj",
         "packagesPath": "C:\\Users\\WIN10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\WIN10\\Desktop\\PruebaPracticaDevzeros\\Entity\\obj\\",
+        "outputPath": "C:\\Users\\WIN10\\source\\repos\\p\\Entity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

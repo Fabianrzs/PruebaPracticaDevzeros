@@ -24,7 +24,7 @@ namespace BLL.Service
         {
             try
             {
-                IEnumerable<TEntity> books = _repository.Consult().Result;
+                IEnumerable<TEntity> books = _repository.Consult();
                 if (books != null)
                 {
                     return new GenericConsultResponse<TEntity>(books);
@@ -34,14 +34,14 @@ namespace BLL.Service
             catch (Exception e) { return new GenericConsultResponse<TEntity>($"Error al Consultar: Se presento lo siguiente {e.Message}"); }
         }
 
-        public async Task<string> DeleteAsync(int codBook)
+        public string Delete(int codBook)
         {
             try
             {
-                var book = _repository.GetCod(codBook).Result;
+                var book = _repository.GetCod(codBook);
                 if (book != null)
                 {
-                    await _repository.Delete(book);
+                    _repository.Delete(book);
                     _unitOfWork.Commit();
                     return "Libro eliminado satisfactoriamente";
                 }
@@ -57,7 +57,7 @@ namespace BLL.Service
         {
             try
             {
-                var entity = _repository.GetCod(codEntity).Result;
+                var entity = _repository.GetCod(codEntity);
                 if (entity != null)
                 {
                     return new GenericlogResponse<TEntity>(entity);
@@ -67,11 +67,11 @@ namespace BLL.Service
             catch (Exception e) { return new GenericlogResponse<TEntity>($"Error al Buscar: Se presento lo siguiente {e.Message}"); }
         }
 
-        public async Task<GenericlogResponse<TEntity>> SaveAsync(TEntity entity)
+        public GenericlogResponse<TEntity> Save(TEntity entity)
         {
             try
             {
-                await _repository.Save(entity);
+                _repository.Save(entity);
                 _unitOfWork.Commit();
                 return new GenericlogResponse<TEntity>(entity);
             }
@@ -82,15 +82,15 @@ namespace BLL.Service
                     ($"Error al Guardar: Se presento lo siguiente {e.Message}"); }
         }
 
-        public async Task<GenericlogResponse<TEntity>> UpdateAsync(int codEntity, TEntity entity)
+        public GenericlogResponse<TEntity> Update(int codEntity, TEntity entity)
         {
             try
             {
-                var entityFind = _repository.GetCod(codEntity).Result;
+                var entityFind = _repository.GetCod(codEntity);
                 if (entityFind != null)
                 {
                     entityFind = entity;
-                    await _repository.Update(entityFind);
+                    _repository.Update(entityFind);
                     _unitOfWork.Commit();
                     return new GenericlogResponse<TEntity>(entityFind);
                 }

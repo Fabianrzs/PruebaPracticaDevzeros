@@ -9,10 +9,10 @@ namespace BLL.Interface
 {
     public interface IGenericService<TEntiy> where TEntiy : class
     {
-        Task<GenericlogResponse<TEntiy>> SaveAsync(TEntiy entity);
-        Task<GenericlogResponse<TEntiy>> UpdateAsync(int codEntity, TEntiy entity);
+        GenericlogResponse<TEntiy> Save(TEntiy entity);
+        GenericlogResponse<TEntiy> Update(int codEntity, TEntiy entity);
         GenericlogResponse<TEntiy> Find(int codEntity);
-        Task<string> DeleteAsync(int codEntity);
+        string Delete(int codEntity);
         GenericConsultResponse<TEntiy> Consult();
     }
 }

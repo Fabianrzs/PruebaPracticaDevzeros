@@ -20,7 +20,8 @@ namespace DAL.Seeders
                     Email = "admin@admin.com",
                     UserName = "Admin",
                     Password = "Admin",
-                    Rol = "Admin"
+                    Rol = "Admin",
+                    UserRole = Interceptors.UserRole()  
                 });
         }
     }
