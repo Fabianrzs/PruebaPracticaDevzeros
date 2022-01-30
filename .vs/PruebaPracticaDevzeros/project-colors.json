@@ -20,6 +20,11 @@
       "ProjectGuid": "6dec2f73-cf92-4653-9d91-0b11d56fa9f6",
       "DisplayName": "Entity",
       "ColorIndex": 3
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
     }
   },
   "NextColorIndex": 4
